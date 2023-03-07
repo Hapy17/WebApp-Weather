@@ -74,7 +74,83 @@ async function insertValuesInDom(weather, coords){
 
     // Ajout du titre et du sous-titre dans la div
     todayTemperaturesDiv.append(todayTemperature, todayMin, todayMax);
-    
+
+    //////////////////////////
+
+    // Création de la div contenant les détails de la météo
+    let todayDetailsDiv = document.createElement('div');
+    todayDetailsDiv.setAttribute('id', 'todayDetails');
+    todayDetailsDiv.setAttribute('class', 'col-12');
+
+    // Ajout de la div dans le DOM
+    todayWeather.appendChild(todayDetailsDiv);
+
+    // Création des cards contenant les détails de la météo
+    // Card pour le logo
+    let todayLogo = document.createElement('div');
+    todayLogo.setAttribute('id', 'todayLogo');
+    todayLogo.setAttribute('class', 'col-3 cardDetail');
+
+    // Card pour l'humidité
+    let todayHumidity = document.createElement('div');
+    todayHumidity.setAttribute('id', 'todayHumidity');
+    todayHumidity.setAttribute('class', 'col-3 cardDetail');
+
+    // Card pour la pression atmosphérique
+    let todayPressure = document.createElement('div');
+    todayPressure.setAttribute('id', 'todayPressure');
+    todayPressure.setAttribute('class', 'col-3 cardDetail');
+
+    // Card pour la vitesse du vent
+    let todayWindSpeed = document.createElement('div');
+    todayWindSpeed.setAttribute('id', 'todayWindSpeed');
+    todayWindSpeed.setAttribute('class', 'col-3 cardDetail');
+
+    // Ajout des cards dans la div
+    todayDetailsDiv.append(todayLogo, todayHumidity, todayPressure, todayWindSpeed);
+
+    // Ajout d'un contenu dans les cards
+    // Card pour le logo
+    let todayLogoImg = document.createElement('img');
+    let todayLogoDescription = document.createElement('p');
+    todayLogoImg.src = weather.current_condition.icon_big;
+    todayLogoDescription.innerHTML = weather.current_condition.condition;
+
+    todayLogo.append(todayLogoImg, todayLogoDescription);
+
+    // Card pour l'humidité
+    let todayHumidityTitle = document.createElement('p');
+    let todayHumidityValue = document.createElement('span');
+    let todayHumidityUnit = document.createElement('p');
+    todayHumidityTitle.innerHTML = "Humidité";
+    todayHumidityValue.innerHTML = weather.current_condition.humidity;
+    todayHumidityUnit.innerHTML = "%";
+
+    todayHumidity.append(todayHumidityTitle, todayHumidityValue, todayHumidityUnit);
+
+    // Card pour la pression atmosphérique
+    let todayPressureTitle = document.createElement('p');
+    let todayPressureValue = document.createElement('span');
+    let todayPressureUnit = document.createElement('p');
+    todayPressureTitle.innerHTML = "Pression";
+    todayPressureValue.innerHTML = weather.current_condition.pressure;
+    todayPressureUnit.innerHTML = "hPa";
+
+    todayPressure.append(todayPressureTitle, todayPressureValue, todayPressureUnit);
+
+    // Card pour le vent avec image
+    let todayWindLogo = document.createElement('img');
+    let todayWindTitle = document.createElement('p');
+
+    todayWindLogo.src = weather.current_condition.wnd_dir;
+    todayWindTitle.innerHTML = weather.current_condition.wnd_spd + " km/h";
+
+    todayWindSpeed.append(todayWindLogo, todayWindTitle);
+
+
+
+
+
 
 
 
