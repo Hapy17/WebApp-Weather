@@ -10,7 +10,6 @@ function getWeather(coords){
     requestWeather.addEventListener('readystatechange', function(){
         if (this.readyState === 4 && this.status === 200){
             const weatherResponse = JSON.parse(this.responseText);
-            // console.log(weatherResponse);
             if(weatherResponse){
                 insertValuesInDom(weatherResponse, coords);
             }
@@ -26,9 +25,59 @@ async function insertValuesInDom(weather, coords){
     // Récupération des éléments du DOM
     const todayWeather = document.getElementById('todayWeather');
     const fourDaysWeather = document.getElementById('fourDaysWeather');
-    const cityName = document.getElementById('cityName');
 
-    cityName.classList.add('placeholder')
+    // // Remise à zéro des éléments du DOM
+    todayWeather.innerHTML = "";
+    // fourDaysWeather.innerHTML = "";
+
+    //////////////////////////
+
+    // Création de la div contenant le nom de la ville et la date
+    let cityAndDateDiv = document.createElement('div');
+    cityAndDateDiv.setAttribute('id', 'cityAndDate');
+    cityAndDateDiv.setAttribute('class', 'col-9');
+
+    // Ajout de la div dans le DOM
+    todayWeather.appendChild(cityAndDateDiv);
+
+    //  Création du titre avec le nom de la ville avec un message d'attente
+    let cityName= document.createElement('h2');
+    cityName.textContent = "En attente du nom de la ville";
+    getCityName(coords);
+
+    //  Création du sous-titre avec la date
+    let date = document.createElement('h3');
+    date.innerHTML = weather.fcst_day_0.day_long + " " + weather.fcst_day_0.date;
+
+    // Ajout du titre et du sous-titre dans la div
+    cityAndDateDiv.append(cityName, date);
+
+    //////////////////////////
+
+    // Création de la div contenant la températures ainsi que le min et le max
+    let todayTemperaturesDiv = document.createElement('div');
+    todayTemperaturesDiv.setAttribute('id', 'todayTemperatures');
+    todayTemperaturesDiv.setAttribute('class', 'col-3');
+
+    // Ajout de la div dans le DOM
+    todayWeather.appendChild(todayTemperaturesDiv);
+
+    // Création du titre avec la température
+    let todayTemperature = document.createElement('h2');
+    todayTemperature.innerHTML = weather.current_condition.tmp + "°C"; 
+
+    // Création du sous-titre avec le min et le max
+    let todayMin = document.createElement('h3');
+    let todayMax = document.createElement('h3');
+    todayMin.innerHTML = "Min: " + weather.fcst_day_0.tmin + "°C";
+    todayMax.innerHTML = "Max: " + weather.fcst_day_0.tmax + "°C";
+
+    // Ajout du titre et du sous-titre dans la div
+    todayTemperaturesDiv.append(todayTemperature, todayMin, todayMax);
+    
+
+
+
 
 }
 
@@ -57,8 +106,6 @@ function initializeMap(){
 
         // Récupération de la météo
         getWeather(coords);
-        // Récupération du nom de la ville
-        getCityName(coords);
 
         // Suppression de l'ancien marker
         map.addEventListener('click', function(){
@@ -89,8 +136,8 @@ function getCityName(coords){
         if (this.readyState === 4 && this.status === 200){
             const cityResponse = JSON.parse(this.responseText)[0];
             // console.log(cityResponse);
-            if(cityResponse){
-                document.getElementById('cityName').innerHTML = cityResponse.name;
+            if(cityResponse){              
+                document.querySelector(`h2`).innerHTML = cityResponse.name;
             }
         }
     });
