@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+
 :root{
     --mainRadius : 10px;
 }
@@ -13,11 +15,13 @@ body{
     background: #00B4DB;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    font-family: 'Ubuntu', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
+
 
 div#app{
     height: 80%;
@@ -31,6 +35,14 @@ div#map{
     /* background-color: #db8d26; */
     border-top-left-radius: var(--mainRadius);
     border-top-right-radius: var(--mainRadius);
+}
+
+div#displayInfos{
+    margin: 10px;
+}
+
+div#todayWeather h2{
+    font-size: 2rem;
 }
 
 
