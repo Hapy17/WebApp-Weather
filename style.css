@@ -29,6 +29,10 @@ h2{
     color: var(--darkBlue);
 }
 
+p{
+    margin-bottom: 0;
+}
+
 
 div#app{
     height: 90%;
@@ -89,11 +93,19 @@ div#todayDetails{
 div#todayDetails div{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-content: center;
     text-align: center;
     padding: 10px;
     box-shadow: var(--shadow);
-    border: #0084b010 .25px solid;
+    border: #0084b031 .25px solid;
+}
+
+div#todayDetails div img{
+    margin: auto;
+    aspect-ratio: 1/1;
+    height: 60px;
+    width: 60px;
 }
 
 div#todayDetails div span{

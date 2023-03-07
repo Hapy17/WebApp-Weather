@@ -139,13 +139,15 @@ async function insertValuesInDom(weather, coords){
     todayPressure.append(todayPressureTitle, todayPressureValue, todayPressureUnit);
 
     // Card pour le vent avec image
-    let todayWindLogo = document.createElement('img');
     let todayWindTitle = document.createElement('p');
+    let todayWindLogo = document.createElement('span');
+    let todayWindspeed = document.createElement('p');
 
-    todayWindLogo.src = weather.current_condition.wnd_dir;
-    todayWindTitle.innerHTML = weather.current_condition.wnd_spd + " km/h";
+    todayWindTitle.innerHTML = "Vent";
+    todayWindLogo.innerHTML = weather.current_condition.wnd_dir;
+    todayWindspeed.innerHTML = weather.current_condition.wnd_spd + " km/h";
 
-    todayWindSpeed.append(todayWindLogo, todayWindTitle);
+    todayWindSpeed.append(todayWindTitle, todayWindLogo, todayWindspeed);
 
 
 
