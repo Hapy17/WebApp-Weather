@@ -9,26 +9,45 @@
     <!-- Style Perso -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- Leaflet -->
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+    crossorigin=""/>
+    <!-- JS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    crossorigin=""></script>
+
     <title>WebApp - Weather</title>
+
 </head>
-<body>
+<body class="container-fluid">
     
-    <div id="app">
+    <div id="app" class="col-4" >
 
         <div id="map">
 
         </div>
 
-        <div id="todayWeather">
+        <div id="displayInfos">
 
-        </div>
+            <div id="todayWeather">
+                <div class="row">
 
-        <div id="fourDaysWeather">
+                </div>
+                    
+            </div>
+
+            <div id="fourDaysWeather">
+
+            </div>
 
         </div>
 
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>
