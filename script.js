@@ -28,6 +28,7 @@ async function insertValuesInDom(weather, coords){
 
     // // Remise à zéro des éléments du DOM
     todayWeather.innerHTML = "";
+    fourDaysWeather.innerHTML = "";
     // fourDaysWeather.innerHTML = "";
 
     //////////////////////////
@@ -149,8 +150,94 @@ async function insertValuesInDom(weather, coords){
 
     todayWindSpeed.append(todayWindTitle, todayWindLogo, todayWindspeed);
 
+    //////////////////////////
+
+    // Création de la div contenant les prévisions de la météo des 4 prochains jours
+    let forecastDiv = document.querySelector('#fourDaysWeather');
+    forecastDiv.setAttribute('class', 'row');
 
 
+    // Création des cards contenant les prévisions de la météo des 4 prochains jours
+    // Card pour le premier jour
+    let firstDay = document.createElement('div');
+    let firstDayName = document.createElement('h3');
+    let firstDayDate = document.createElement('span');
+    let firstDayLogo = document.createElement('img');
+    let firstDayDescription = document.createElement('p');
+    let firstDayTemperature = document.createElement('h4');
+    
+    firstDayName.innerHTML = weather.fcst_day_1.day_long;
+    firstDayDate.innerHTML = weather.fcst_day_1.date;
+    firstDayLogo.src = weather.fcst_day_1.icon;
+    firstDayDescription.innerHTML = weather.fcst_day_1.condition;
+    firstDayTemperature.innerHTML = weather.fcst_day_1.tmin + "°C / " + weather.fcst_day_1.tmax + "°C";
+
+    firstDay.setAttribute('id', 'firstDay');
+    firstDay.setAttribute('class', 'col-3 cardForecast');
+
+    firstDay.append(firstDayName, firstDayDate, firstDayLogo, firstDayDescription, firstDayTemperature);
+
+    // Card pour le deuxième jour
+    let secondDay = document.createElement('div');
+    let secondDayName = document.createElement('h3');
+    let secondDayDate = document.createElement('span');
+    let secondDayLogo = document.createElement('img');
+    let secondDayDescription = document.createElement('p');
+    let secondDayTemperature = document.createElement('h4');
+
+    secondDayName.innerHTML = weather.fcst_day_2.day_long;
+    secondDayDate.innerHTML = weather.fcst_day_2.date;
+    secondDayLogo.src = weather.fcst_day_2.icon;
+    secondDayDescription.innerHTML = weather.fcst_day_2.condition;
+    secondDayTemperature.innerHTML = weather.fcst_day_2.tmin + "°C / " + weather.fcst_day_2.tmax + "°C";
+
+    secondDay.setAttribute('id', 'secondDay');
+    secondDay.setAttribute('class', 'col-3 cardForecast');
+
+    secondDay.append(secondDayName, secondDayDate, secondDayLogo, secondDayDescription, secondDayTemperature);
+
+    // Card pour le troisième jour
+    let thirdDay = document.createElement('div');
+    let thirdDayName = document.createElement('h3');
+    let thirdDayDate = document.createElement('span');
+    let thirdDayLogo = document.createElement('img');
+    let thirdDayDescription = document.createElement('p');
+    let thirdDayTemperature = document.createElement('h4');
+
+    thirdDayName.innerHTML = weather.fcst_day_3.day_long;
+    thirdDayDate.innerHTML = weather.fcst_day_3.date;
+    thirdDayLogo.src = weather.fcst_day_3.icon;
+    thirdDayDescription.innerHTML = weather.fcst_day_3.condition;
+    thirdDayTemperature.innerHTML = weather.fcst_day_3.tmin + "°C / " + weather.fcst_day_3.tmax + "°C";
+
+    thirdDay.setAttribute('id', 'thirdDay');
+    thirdDay.setAttribute('class', 'col-3 cardForecast');
+
+    thirdDay.append(thirdDayName, thirdDayDate, thirdDayLogo, thirdDayDescription, thirdDayTemperature);
+
+    // Card pour le quatrième jour
+    let fourthDay = document.createElement('div');
+    let fourthDayName = document.createElement('h3');
+    let fourthDayDate = document.createElement('span');
+    let fourthDayLogo = document.createElement('img');
+    let fourthDayDescription = document.createElement('p');
+    let fourthDayTemperature = document.createElement('h4');
+    
+    fourthDayName.innerHTML = weather.fcst_day_4.day_long;
+    fourthDayDate.innerHTML = weather.fcst_day_4.date;
+    fourthDayLogo.src = weather.fcst_day_4.icon;
+    fourthDayDescription.innerHTML = weather.fcst_day_4.condition;
+    fourthDayTemperature.innerHTML = weather.fcst_day_4.tmin + "°C / " + weather.fcst_day_4.tmax + "°C";
+
+    fourthDay.setAttribute('id', 'fourthDay');
+    fourthDay.setAttribute('class', 'col-3 cardForecast');
+    
+    fourthDay.append(fourthDayName, fourthDayDate, fourthDayLogo, fourthDayDescription, fourthDayTemperature);
+
+    // Ajout des cards dans la div
+    forecastDiv.append(firstDay, secondDay, thirdDay, fourthDay);
+
+    //////////////////////////
 
 
 

@@ -3,8 +3,11 @@
 :root{
     --mainRadius : 10px;
     --darkBlue : #0083B0;
+    --darkBlue-opacity : #0084b050;
     --lightBlue : #00B4DB;
+    --white : #e7e7e7;
     --shadow : #00000020 0px 10px 10px;
+    --bigShadow : #00000050 0px 10px 10px;
 }
 
 *{
@@ -20,6 +23,7 @@ body{
     background: linear-gradient(to right, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     font-family: 'Ubuntu', sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -35,7 +39,7 @@ p{
 
 
 div#app{
-    height: 90%;
+    height: 700px;
     background: #e7e7e7;
     border-radius: var(--mainRadius);
     box-shadow: var(--shadow);
@@ -59,6 +63,13 @@ div#todayWeather{
     justify-content: space-around;
     align-content: space-between;
 }
+
+div#todayWeather span{
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+
 
 div#cityAndDate{
     display: flex;
@@ -88,6 +99,7 @@ div#todayDetails{
     display: flex;
     justify-content: space-around;
     gap: .2rem;
+    margin-bottom: 2rem;
 }
 
 div#todayDetails div{
@@ -110,4 +122,96 @@ div#todayDetails div img{
 
 div#todayDetails div span{
     color: var(--darkBlue);
+}
+
+/* Forecast */
+
+div#fourDaysWeather{
+    display: flex;
+    justify-content: space-around;
+    align-content: space-between;
+    margin-bottom: 2rem;    
+}
+
+div#fourDaysWeather div{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    text-align: center;
+
+    background-color: var(--white);
+    border-left: var(--darkBlue-opacity) .1px solid;
+}
+
+div#fourDaysWeather div:nth-child(1){  
+    border-radius: 0 0 0 var(--mainRadius);
+}
+div#fourDaysWeather div:nth-child(4){  
+    border-radius: 0 0 var(--mainRadius) 0;
+}
+
+div#fourDaysWeather div:first-child{
+    border-left: none;
+}
+
+div#fourDaysWeather:hover > div{
+    opacity: 50%;
+    border: none;
+}
+
+div#fourDaysWeather div.cardForecast:hover{
+    opacity: 100%;
+    box-shadow: var(--bigShadow);
+    transform: scale(1.10);
+    border: none;
+    animation: scaleUp .5s;
+    
+    
+}
+@keyframes scaleUp {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.10);
+    }
+}
+
+div#fourDaysWeather div h3{
+    font-size: 1.4rem;
+    margin-bottom: .2rem;
+
+}
+
+div#fourDaysWeather div h4{
+    font-size: 1.2rem;
+    margin-bottom: .2rem;
+
+}
+
+div#fourDaysWeather div p{
+    height: 40px;
+    align-self: center;
+    font-size: .8rem;
+
+}
+
+div#fourDaysWeather div img{
+    margin: auto;
+    aspect-ratio: 1/1;
+    height: 60px;
+    width: 60px;
+}
+
+footer, footer a{
+    text-align: center;
+    margin-top: 2rem;
+    font-size: .8rem;
+    color: hsla(0, 0%, 0%, 0.75);
+}
+
+footer a:hover{
+    color: var(--white)
 }
